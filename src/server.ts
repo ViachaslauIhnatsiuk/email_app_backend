@@ -2,6 +2,7 @@ require('dotenv').config();
 import express from 'express';
 import http from 'http';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { authRoutes } from './routes/auth';
 import { usersRoutes } from './routes/user';
 
@@ -10,8 +11,10 @@ const server = http.createServer(app);
 
 app.use(express.json());
 
+app.use(cors());
+
 app.use('/', authRoutes);
-app.use('/', usersRoutes);
+app.use('/main', usersRoutes);
 
 mongoose.set('strictQuery', false);
 

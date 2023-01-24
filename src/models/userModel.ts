@@ -30,15 +30,16 @@ const userSchema = new Schema(
 );
 
 userSchema.statics.signin = async function (name: string) {
-  const user = await this.findOne({ name });
+  const foundUser = await this.findOne({ name });
 
-  if (!user) {
+  if (!foundUser) {
     const user = await this.create({
       name,
+      messages: [],
     });
     return user;
   } else {
-    return user;
+    return foundUser;
   }
 };
 
