@@ -1,5 +1,4 @@
 import { Schema, model } from 'mongoose';
-const User = require('../models/userModel');
 
 const userSchema = new Schema(
   {
@@ -19,6 +18,10 @@ const userSchema = new Schema(
             required: true,
           },
           message: {
+            type: String,
+            required: true,
+          },
+          id: {
             type: String,
             required: true,
           },
